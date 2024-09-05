@@ -6,19 +6,32 @@ using UnityEngine;
 
 public class RandomNameGenerator
 {
-    private static string filePath = "Assets/TextData/Names.txt";
+    private static string maleNames = "Assets/TextData/MaleNames.txt";
+    private static string maleSurnames = "Assets/TextData/MaleSurnames.txt";
 
-    TextAsset namesData = AssetDatabase.LoadAssetAtPath<TextAsset>(filePath);
+    //private static string femaleNames = "Assets/TextData/FemaleNames.txt";
+    //private static string femaleSurnames = "Assets/TextData/FemaleSurnames.txt";
+
+    TextAsset maleNamesData = AssetDatabase.LoadAssetAtPath<TextAsset>(maleNames);
+    TextAsset maleSurnamesData = AssetDatabase.LoadAssetAtPath<TextAsset>(maleSurnames);
 
 
-    public string GetName()
+
+    public string GetMaleName()
     {
+        string[] maleNames = maleNamesData.text.Split('\n');
 
-        string[] lines = namesData.text.Split('\n');
+        string maleFullName = maleNames[Random.Range(0, maleNames.Length - 1)];
 
-        string name = lines[Random.Range(0, lines.Length - 1)];
+        return maleFullName;
+    }
+    public string GetMaleSurname()
+    {
+        string[] maleSurnames = maleSurnamesData.text.Split('\n');
 
-        return name;
+        string maleFullName = maleSurnames[Random.Range(0, maleNames.Length - 1)];
+
+        return maleFullName;
     }
 
 

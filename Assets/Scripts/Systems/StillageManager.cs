@@ -13,7 +13,8 @@ public class StillageManager : MonoBehaviour
 
     private void Start()
     {
-        FillStillage(UnityEngine.Random.Range(0, 3));
+        FillStillage(3);
+        //FillStillage(UnityEngine.Random.Range(0, 3));
     }
     public void FillStillage(int boxCountForShelf)
     {
