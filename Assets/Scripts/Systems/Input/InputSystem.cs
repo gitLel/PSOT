@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputSystem : MonoBehaviour
 {
+    public PlayerControls playerControls;
+    public Camera playerCamera;
     private CharacterController characterController;
-    private PlayerControls playerControls;
-    private PlayerInput playerInput;
-    private Camera playerCamera;
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float mouseSensitivity = 100f;
-    [SerializeField] private float interactRange = 3;
-
 
     private float xRotation = 0f;
 
@@ -22,7 +18,6 @@ public class InputSystem : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         playerCamera = Camera.main;
-        playerInput = GetComponent<PlayerInput>();
 
         playerControls = new PlayerControls();
         playerControls.Enable();
@@ -33,7 +28,6 @@ public class InputSystem : MonoBehaviour
     {
         Move();
         Look();
-        Interact();
     }
 
     private void Move()
@@ -59,18 +53,5 @@ public class InputSystem : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    private void Interact()
-    {
-        if (playerControls.Player.Interact.triggered)
-        {
-            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, interactRange))
-            {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
-                {
-                    interactObject.Interact();
-                }
-            }
-        }
-    }
+    
 }

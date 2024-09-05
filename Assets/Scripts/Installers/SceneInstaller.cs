@@ -11,38 +11,44 @@ public class SceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        InstallStorageObjects();
+        InstallStorage();
+        IstallOther();
 
-        this.Container.Bind<InputSystem>()
-            .FromComponentInHierarchy()
-            .AsSingle();
 
         this.Container.Bind<VisitorSpawner>()
             .FromComponentInHierarchy()
             .AsSingle();
 
-        this.Container.BindInterfacesAndSelfTo<RandomNumberGenerator>()
-            .AsSingle();
 
-        this.Container.BindInterfacesAndSelfTo<RandomNameGenerator>()
+        this.Container.Bind<InputSystem>()
+            .FromComponentInHierarchy()
             .AsSingle();
 
         this.Container.Bind<GameStateMachine>()
             .AsSingle();
 
-        //TEST
-        //this.Container.BindInterfacesTo<MoveInput>().AsSingle();
+    }
+
+    private void IstallOther()
+    {
+        this.Container.BindInterfacesAndSelfTo<RandomNumberGenerator>()
+                    .AsSingle();
+
+        this.Container.BindInterfacesAndSelfTo<RandomNameGenerator>()
+            .AsSingle();
 
     }
 
-    private void InstallStorageObjects()
+    private void InstallStorage()
     {
-        this.Container.Bind<StorageManager>()
-            .FromComponentInHierarchy()
-            .AsSingle();
 
         this.Container.Bind<Shelf>()
             .FromComponentInHierarchy()
             .AsSingle();
+
+        this.Container.Bind<StillageManager>()
+            .FromComponentInHierarchy()
+            .AsSingle();
     }
+
 }

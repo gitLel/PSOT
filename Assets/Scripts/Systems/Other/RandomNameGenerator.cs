@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RandomNameGenerator
 {
-    private static string filePath = "Assets/Resources/Other/Names.txt";
+    private static string filePath = "Assets/TextData/Names.txt";
 
     TextAsset namesData = AssetDatabase.LoadAssetAtPath<TextAsset>(filePath);
 

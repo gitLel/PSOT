@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StorageConfig 
+public class StorageConfig : ScriptableObject
 {
-    private string visitorName;
+    public static string visitorName;
     public static int boxCount = 0;
-    public int boxNumber;
+    public static int boxNumber;
 
-    
+
 }
