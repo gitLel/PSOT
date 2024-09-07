@@ -25,11 +25,11 @@ public class StillageManager : MonoBehaviour
 
             for (int i = 0; i < boxCountForShelf; i++)
             {
-                if (shelf.GetComponent<Shelf>().TryPlaceBox(box))
+                if (shelf.GetComponent<ShelfManager>().TryPlaceBox(box))
                 {
                     StorageConfig.boxCount++;
                 }
-                shelf.GetComponent<Shelf>().PlaceBox(box);
+                shelf.GetComponent<ShelfManager>().PlaceBox(box);
                 shelf.transform.localPosition = Vector3.zero;
             }
         }

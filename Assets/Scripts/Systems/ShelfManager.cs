@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Shelf : MonoBehaviour
+public class ShelfManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> slotsTransform;
 
-    [SerializeField] private List<GameObject> debugSlotsVisual;
-
     [SerializeField] private List<bool> slots;
+
+    public static GameObject currentBoxPrefab;
     
     public void PlaceBox(BoxSO box)
     {
         if (TryPlaceBox(box))
         {
 
-            var vbox = Instantiate(box.boxPrefab, this.transform);
-            vbox.transform.position = GetCorrectPlacementBox(box).position;
+            currentBoxPrefab = Instantiate(box.boxPrefab, this.transform);
+            currentBoxPrefab.transform.position = GetCorrectPlacementBox(box).position;
 
-            ChaoticRotateBox(vbox);
+            ChaoticRotateBox(currentBoxPrefab);
 
             FillSlotsForBox(box);
         }
 
+    }
+    public void DeleteBox(BoxSO box)
+    {
+        currentBoxPrefab = null;
     }
     private void FillSlotsForBox(BoxSO box)
     {
@@ -105,12 +109,5 @@ public class Shelf : MonoBehaviour
             Debug.Log(slots[i]);
         }
     }
-    private void HideSlotsVisual()
-    {
-        foreach (var slot in debugSlotsVisual)
-        {
-            slot.SetActive(false);
-        }
-
-    }
+   
 }

@@ -6,9 +6,11 @@ using Zenject;
 public class Box : MonoBehaviour, IInteractable, ITakeable
 {
 
+
     public void Interact()
     {
         Debug.Log("Korobka has been interacted");
+
     }
 
 }

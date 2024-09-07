@@ -42,7 +42,7 @@ public class SceneInstaller : MonoInstaller
     private void InstallStorage()
     {
 
-        this.Container.Bind<Shelf>()
+        this.Container.Bind<ShelfManager>()
             .FromComponentInHierarchy()
             .AsSingle();
 

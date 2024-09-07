@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8386292944562673080}
   - component: {fileID: 1661776437713244497}
+  - component: {fileID: 2162230372142943893}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Untagged
@@ -265,6 +266,27 @@ MonoBehaviour:
   - {fileID: 1560187007193049367}
   - {fileID: 1028523007491870891}
   slots: 000000
+--- !u!65 &2162230372142943893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923585919084001438}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.3, z: 2}
+  m_Center: {x: 0.05692017, y: -0.10592936, z: -0.019892335}
 --- !u!1 &3541582014468546243
 GameObject:
   m_ObjectHideFlags: 0
