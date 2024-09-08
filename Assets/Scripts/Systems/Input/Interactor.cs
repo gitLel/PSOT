@@ -19,6 +19,15 @@ public class Interactor : MonoBehaviour
     }
     private void Interact()
     {
+
+        TakeObject();
+
+        DropObject(gameObj);
+
+    }
+
+    private void TakeObject()
+    {
         if (inputSystem.playerControls.Player.Interact.triggered)
         {
             Ray ray = new Ray(inputSystem.playerCamera.transform.position, inputSystem.playerCamera.transform.forward);
@@ -39,13 +48,8 @@ public class Interactor : MonoBehaviour
                         return;
                     }
                 }
-
-
             }
         }
-
-        DropObject(gameObj);
-
     }
 
     private void DropObject(GameObject obj)

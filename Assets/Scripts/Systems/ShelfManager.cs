@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,29 +12,38 @@ public class ShelfManager : MonoBehaviour
 
     public static GameObject currentBoxPrefab;
     
-    public void PlaceBox(BoxSO box)
+    public void PlaceBox(Box box)
     {
         if (TryPlaceBox(box))
         {
 
-            currentBoxPrefab = Instantiate(box.boxPrefab, this.transform);
+            currentBoxPrefab = Instantiate(box.gameObject, this.transform);
             currentBoxPrefab.transform.position = GetCorrectPlacementBox(box).position;
+
+            SetNumberIDForBox(box);
 
             ChaoticRotateBox(currentBoxPrefab);
 
-            FillSlotsForBox(box);
+            FillOrClearSlots(box, true);
         }
 
     }
-    public void DeleteBox(BoxSO box)
+
+    private static void SetNumberIDForBox(Box box)
     {
-        currentBoxPrefab = null;
+        box.boxNumberID = Random.Range(1000, 9999);
+        StorageConfig.boxIDNumbers.Add(box.boxNumberID);
     }
-    private void FillSlotsForBox(BoxSO box)
+
+    public void DeleteBox(Box box)
     {
-        for (int i = 0; i < box.slotSize; i++)
+        FillOrClearSlots(box, false);
+    }
+    private void FillOrClearSlots(Box box, bool isFill)
+    {
+        for (int i = 0; i < box.BoxSO.slotSize; i++)
         {
-            slots[GetFirstEmptySlot()] = true;
+            slots[GetFirstEmptySlot()] = isFill;
         }
     }
     private bool IsSlotEmpty(int slot)
@@ -44,7 +54,7 @@ public class ShelfManager : MonoBehaviour
         }
         return true;
     }
-    public bool TryPlaceBox(BoxSO box)
+    public bool TryPlaceBox(Box box)
     {
         var emptySlots = 0;
 
@@ -55,7 +65,7 @@ public class ShelfManager : MonoBehaviour
                 emptySlots++;
             }
         }
-        if (emptySlots >= box.slotSize)
+        if (emptySlots >= box.BoxSO.slotSize)
         {
             emptySlots = 0;
             return true;
@@ -78,13 +88,13 @@ public class ShelfManager : MonoBehaviour
         int randomValue = Random.Range(-10, 10);
         box.transform.localEulerAngles = new Vector3(0, randomValue, 0);
     }
-    private Transform GetCorrectPlacementBox(BoxSO boxPrefab)
+    private Transform GetCorrectPlacementBox(Box box)
     {
-        if (boxPrefab.slotSize == 3)
+        if (box.BoxSO.slotSize == 3)
         {
             return slotsTransform[1];
         }
-        if (boxPrefab.slotSize == 2)
+        if (box.BoxSO.slotSize == 2)
         {
             if (IsSlotEmpty(0))
             {
@@ -96,7 +106,7 @@ public class ShelfManager : MonoBehaviour
             }
 
         }
-        if (boxPrefab.slotSize == 1)
+        if (box.BoxSO.slotSize == 1)
         {
             return slotsTransform[GetFirstEmptySlot()];
         }

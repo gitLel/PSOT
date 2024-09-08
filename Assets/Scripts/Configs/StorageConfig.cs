@@ -9,5 +9,5 @@ public class StorageConfig : ScriptableObject
     public static int boxCount = 0;
     public static int boxNumber;
 
-
+    public static List<int> boxIDNumbers = new List<int>();
 }

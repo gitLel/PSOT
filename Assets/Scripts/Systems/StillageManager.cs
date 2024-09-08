@@ -9,11 +9,11 @@ public class StillageManager : MonoBehaviour
 
     [SerializeField] private GameObject shelfPrefab;
 
-    [SerializeField] private List<BoxSO> boxes;
+    [SerializeField] private List<Box> boxes;
 
     private void Start()
     {
-        FillStillage(3);
+        FillStillage(1);
         //FillStillage(UnityEngine.Random.Range(0, 3));
     }
     public void FillStillage(int boxCountForShelf)
@@ -35,7 +35,7 @@ public class StillageManager : MonoBehaviour
         }
     }
 
-    private BoxSO GetRandomBox()
+    private Box GetRandomBox()
     {
         int random = UnityEngine.Random.Range(0, 3);
         return boxes[random];

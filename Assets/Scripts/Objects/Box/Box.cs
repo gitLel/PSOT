@@ -6,10 +6,18 @@ using Zenject;
 public class Box : MonoBehaviour, IInteractable, ITakeable
 {
 
+    [field:SerializeField] public BoxSO BoxSO {  get; private set; }
+    public int boxNumberID;
+
 
     public void Interact()
     {
-        Debug.Log("Korobka has been interacted");
+
+        Debug.Log("Эта коробка: " + boxNumberID + "\n");
+        
+        Debug.Log("Все коробки: " + StorageConfig.boxIDNumbers.Count + "\n");
+
+
 
     }
 
