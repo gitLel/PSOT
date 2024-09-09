@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class Machine : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class Machine : MonoBehaviour
 
     public static Box boxSlot;
 
+    [Inject]
+    private ParcelCamera parcelCamera;
 
-   
     private void AcceptBox()
     {
         if (boxSlot)
@@ -43,8 +45,9 @@ public class Machine : MonoBehaviour
             if (box.gameObject.transform.parent == null)
             {
                 boxSlot = box;
+                boxSlot.GetComponent<Rigidbody>().isKinematic = true;
                 AcceptBox();
-
+                parcelCamera.PlaceParcelOnCamera(boxSlot.gameObject);
             }
 
         }

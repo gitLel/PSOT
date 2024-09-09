@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class MachineUI : MonoBehaviour
 {
     [SerializeField] private Image imageCheck;
+
+    
 
     private void Start()
     {
@@ -25,6 +28,7 @@ public class MachineUI : MonoBehaviour
             if (StorageConfig.boxNumber == Machine.boxSlot.boxNumberID)
             {
                 SetColorForScreen(true);
+
                 Debug.Log("Вы нашли коробку)");
             }
             else

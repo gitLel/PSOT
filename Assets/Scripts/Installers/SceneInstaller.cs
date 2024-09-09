@@ -37,6 +37,10 @@ public class SceneInstaller : MonoInstaller
         this.Container.BindInterfacesAndSelfTo<RandomNameGenerator>()
             .AsSingle();
 
+        this.Container.Bind<ParcelCamera>()
+            .FromComponentInHierarchy()
+            .AsSingle();
+
     }
 
     private void InstallStorage()
