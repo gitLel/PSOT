@@ -21,18 +21,21 @@ public class ShelfManager : MonoBehaviour
             currentBoxPrefab.transform.position = GetCorrectPlacementBox(box).position;
 
             SetNumberIDForBox(box);
+            Debug.Log(box.boxNumberID);
+            
 
             ChaoticRotateBox(currentBoxPrefab);
 
             FillOrClearSlots(box, true);
         }
-
     }
 
     private static void SetNumberIDForBox(Box box)
     {
         box.boxNumberID = Random.Range(1000, 9999);
         StorageConfig.boxIDNumbers.Add(box.boxNumberID);
+
+        
     }
 
     public void DeleteBox(Box box)

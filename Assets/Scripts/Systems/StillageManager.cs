@@ -13,10 +13,10 @@ public class StillageManager : MonoBehaviour
 
     private void Start()
     {
-        FillStillage(1);
+        FillShelf(1);
         //FillStillage(UnityEngine.Random.Range(0, 3));
     }
-    public void FillStillage(int boxCountForShelf)
+    public void FillShelf(int boxCountForShelf)
     {
         foreach (Transform t in shelfSlots)
         {

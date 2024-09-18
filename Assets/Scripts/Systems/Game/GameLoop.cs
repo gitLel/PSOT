@@ -5,13 +5,35 @@ using Zenject;
 
 public class GameLoop : MonoBehaviour
 {
-    private void Start()
+    bool isFull = false;
+
+    private void Update()
     {
-        StorageConfig.boxNumber =  StorageConfig.boxIDNumbers[Random.Range(0, StorageConfig.boxIDNumbers.Count)];
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            isFull = !isFull;
 
-        Debug.Log("Вам нужна коробка: " + StorageConfig.boxNumber);
+            foreach (var item in StorageConfig.boxIDNumbers)
+            {
+                Debug.Log(item);
+
+            }
+        }
+
+        if(isFull)
+        {
+            StorageConfig.currentBoxNumber = StorageConfig.boxIDNumbers[Random.Range(0, StorageConfig.boxIDNumbers.Count)];
+
+            Debug.Log("Вам нужна коробка: " + StorageConfig.currentBoxNumber);
 
 
+            foreach (var box in StorageConfig.boxIDNumbers)
+            {
+                Debug.Log(box);
+            }
+
+            isFull = false;
+        }
     }
-    
+
 }

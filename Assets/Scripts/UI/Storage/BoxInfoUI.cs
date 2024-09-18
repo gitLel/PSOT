@@ -17,8 +17,8 @@ public class BoxInfoUI : MonoBehaviour
 
     private void Start()
     {
-        boxNumber.text = "Box number: " + randomNumberGenerator.GetNumber().ToString();
-        visitorName.text = "name: " + randomNameGenerator.GetMaleName().ToString() + "                       " +  randomNameGenerator.GetMaleSurname().ToString();
+        boxNumber.text = "Box number: " + StorageConfig.currentBoxNumber;
+        visitorName.text = $"{randomNameGenerator.GetMaleName()}";
     }
     private void Update()
     {

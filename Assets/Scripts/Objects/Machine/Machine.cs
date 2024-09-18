@@ -14,11 +14,53 @@ public class Machine : MonoBehaviour
 
     [SerializeField] private int descentDuration;
 
+    [SerializeField] private GameObject offLamp;
+    [SerializeField] private GameObject redLamp;
+    [SerializeField] private GameObject blueLamp;
+
+    [SerializeField] private GameObject currentLamp;
+
+    [SerializeField] private Transform lampPos;
+
+    [SerializeField] private Transform outWallDrawer;
+    [SerializeField] private Transform inWallDrawer;
+
+    [SerializeField] private GameObject wallDrawer;
+
     public static Box boxSlot;
 
     [Inject]
     private ParcelCamera parcelCamera;
 
+
+
+    private void Start()
+    {
+        SetLamp(offLamp);
+        WallDraverMove(false);
+    }
+
+    private void SetLamp(GameObject lamp)
+    {
+        Destroy(currentLamp);
+        currentLamp = Instantiate(lamp, lampPos);
+        currentLamp.transform.localPosition = Vector3.zero;
+        currentLamp.transform.localEulerAngles = Vector3.zero;
+        currentLamp.transform.localScale = Vector3.one;
+    }
+    private void SetColorForLamp(bool isCurrect)
+    {
+        if (isCurrect)
+        {
+            SetLamp(blueLamp);
+
+        }
+        else
+        {
+            SetLamp(redLamp);
+
+        }
+    }
     private void AcceptBox()
     {
         if (boxSlot)
@@ -36,6 +78,8 @@ public class Machine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlaceBoxInSlot(other);
+
+        
     }
 
     private void PlaceBoxInSlot(Collider other)
@@ -48,9 +92,36 @@ public class Machine : MonoBehaviour
                 boxSlot.GetComponent<Rigidbody>().isKinematic = true;
                 AcceptBox();
                 parcelCamera.PlaceParcelOnCamera(boxSlot.gameObject);
+
+                if (boxSlot.boxNumberID == StorageConfig.currentBoxNumber)
+                {
+                    SetColorForLamp(true);
+                    WallDraverMove(true);
+                }
+                else
+                {
+                    SetColorForLamp(false);
+                    WallDraverMove(false);
+                }
             }
 
         }
+    }
+    private void WallDraverMove(bool isTrue)
+    {
+        if(isTrue)
+        {
+            DOTween.Sequence()
+                .Append(wallDrawer.transform.DOMove(outWallDrawer.position, descentDuration))
+                ;
+        }
+        else
+        {
+            DOTween.Sequence()
+                .Append(wallDrawer.transform.DOMove(inWallDrawer.position, descentDuration))
+                ;
+        }
+
     }
     
 }

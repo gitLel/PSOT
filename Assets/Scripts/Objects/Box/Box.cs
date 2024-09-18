@@ -12,13 +12,7 @@ public class Box : MonoBehaviour, IInteractable, ITakeable
 
     public void Interact()
     {
-
         Debug.Log("Эта коробка: " + boxNumberID + "\n");
-        
-        Debug.Log("Все коробки: " + StorageConfig.boxIDNumbers.Count + "\n");
-
-
-
     }
 
 }

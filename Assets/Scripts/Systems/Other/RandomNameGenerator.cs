@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,24 +12,16 @@ public class RandomNameGenerator
     TextAsset maleNamesData = AssetDatabase.LoadAssetAtPath<TextAsset>(maleNames);
     TextAsset maleSurnamesData = AssetDatabase.LoadAssetAtPath<TextAsset>(maleSurnames);
 
-
-
     public string GetMaleName()
     {
         string[] maleNames = maleNamesData.text.Split('\n');
-
-        string maleFullName = maleNames[Random.Range(0, maleNames.Length - 1)];
-
-        return maleFullName;
-    }
-    public string GetMaleSurname()
-    {
         string[] maleSurnames = maleSurnamesData.text.Split('\n');
 
-        string maleFullName = maleSurnames[Random.Range(0, maleNames.Length - 1)];
+        string maleFullName = maleNames[Random.Range(0, maleNames.Length - 1)] + "\n" + maleSurnames[Random.Range(0, maleNames.Length - 1)];
+
+
 
         return maleFullName;
     }
-
 
 }

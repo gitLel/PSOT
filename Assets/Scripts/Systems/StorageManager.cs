@@ -15,7 +15,7 @@ public class StorageManager : MonoBehaviour
 
     private void Start()
     {
-        stillageManager.FillStillage(3);
+        stillageManager.FillShelf(3);
     }
 
 }
