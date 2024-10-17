@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class VisitorConfig : ScriptableObject
 {
-    public GameObject visitorPrefab;
+    public UnityEngine.GameObject visitorPrefab;
     public Transform visitorSpawnPoint;
 }
