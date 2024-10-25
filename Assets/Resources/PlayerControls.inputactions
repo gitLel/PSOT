@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sit",
+                    "name": "Escape",
                     "type": "Button",
                     "id": "8d74aa50-1d28-46bf-8e0e-1e33a9646c94",
                     "expectedControlType": "Button",
@@ -88,22 +88,11 @@
                 {
                     "name": "",
                     "id": "f8ae4638-fe17-4452-97bf-2e424c8018ac",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "79d58f43-641e-43c0-be67-81f2af4baf74",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sit",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

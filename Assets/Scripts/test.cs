@@ -24,12 +24,6 @@ public class test : MonoBehaviour
            
                 BoxSpawner.SpawnBox(storageConfig.boxes[0].GetComponent<Box>(), transform);
             
-            Debug.Log("Спис0к:");
-            for (int i = 0; i < StorageConfig.boxIDNumbers.Count; i++)
-            {
-                Debug.Log(StorageConfig.boxIDNumbers[i]);
-
-            }
         });
     }
 

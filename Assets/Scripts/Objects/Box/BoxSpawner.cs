@@ -13,7 +13,7 @@ public class BoxSpawner : MonoBehaviour
 
     private static void SetIdForBox(GameObject boxPrefab)
     {
-        var id = Random.Range(1000, 9999);
+        var id = Random.Range(1000000, 9999999);
         boxPrefab.GetComponent<Box>().BoxID = id;
 
         StorageConfig.boxIDNumbers.Add(boxPrefab.GetComponent<Box>().BoxID);

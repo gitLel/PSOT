@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BoxSO>k__BackingField: {fileID: 0}
-  boxNumberID: 0
 --- !u!65 &8172682700702242609
 BoxCollider:
   m_ObjectHideFlags: 0

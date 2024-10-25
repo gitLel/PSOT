@@ -19,8 +19,9 @@ public class Machine : AbstractStorage, IInteractable
     
     public void Interact()
     {
-       
-       
+        MoveOutPort();
+
+
     }
 
     private void PlaceInPort()

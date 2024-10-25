@@ -46,7 +46,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Sit"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""8d74aa50-1d28-46bf-8e0e-1e33a9646c94"",
                     ""expectedControlType"": ""Button"",
@@ -110,22 +110,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f8ae4638-fe17-4452-97bf-2e424c8018ac"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""79d58f43-641e-43c0-be67-81f2af4baf74"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sit"",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -193,7 +182,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Sit = m_Player.FindAction("Sit", throwIfNotFound: true);
+        m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
     }
@@ -259,7 +248,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Sit;
+    private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_DropItem;
     public struct PlayerActions
@@ -268,7 +257,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Sit => m_Wrapper.m_Player_Sit;
+        public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @DropItem => m_Wrapper.m_Player_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -286,9 +275,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Sit.started += instance.OnSit;
-            @Sit.performed += instance.OnSit;
-            @Sit.canceled += instance.OnSit;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -305,9 +294,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Sit.started -= instance.OnSit;
-            @Sit.performed -= instance.OnSit;
-            @Sit.canceled -= instance.OnSit;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -335,7 +324,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnLook(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
-        void OnSit(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
     }

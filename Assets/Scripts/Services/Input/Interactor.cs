@@ -78,9 +78,11 @@ public class Interactor : MonoBehaviour
                 if (hitInfo.collider.TryGetComponent(out AbstractStorage storage))
                 {
                     storage.gameObj = obj;
-                    storage.Place();
-                    storage.gameObj = null;
-                    currentObject = null;
+                    if (storage.TryPlace())
+                    {
+                        currentObject = null;
+
+                    }
                     return;
                 }
                 else
@@ -89,8 +91,6 @@ public class Interactor : MonoBehaviour
                     return;
                 }
             }
-            
-
             SetObjectOutHand(obj);
             currentObject = null;
         }

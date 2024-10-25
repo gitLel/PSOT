@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using UniRx;
 using UnityEngine;
 
 public abstract class AbstractStorage : MonoBehaviour
@@ -10,25 +8,27 @@ public abstract class AbstractStorage : MonoBehaviour
 
     public GameObject gameObj { get; set; }
 
-    public void Place()
+    public bool TryPlace()
     {
-        PlaceBox(gameObj.GetComponent<Box>());
-        Debug.Log("place");
+        if (TryPlaceBox(gameObj.GetComponent<Box>()))
+        {
+            PlaceBox(gameObj.GetComponent<Box>());
+            return true;
+        }
+        return false;
     }
     private void PlaceBox(Box box)
     {
-        if (TryPlaceBox(box))
-        {
-            box.transform.position = GetFirstEmptyTransformSlot().position;
-            box.transform.eulerAngles = Vector3.zero;
-            box.transform.SetParent(GetFirstEmptyTransformSlot());
 
-            box.gameObject.GetComponent<BoxCollider>().enabled = true;
-            box.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        box.transform.position = GetFirstEmptyTransformSlot().position;
+        box.transform.eulerAngles = Vector3.zero;
+        box.transform.SetParent(GetFirstEmptyTransformSlot());
 
-            //ChaoticRotateBox(box);
+        box.gameObject.GetComponent<BoxCollider>().enabled = true;
+        box.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-        }
+        //ChaoticRotateBox(box);
+
     }
     private bool TryPlaceBox(Box box)
     {

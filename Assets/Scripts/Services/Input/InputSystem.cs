@@ -12,10 +12,7 @@ public class InputSystem : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float gravity = 9.81f * 2;
 
-
     [SerializeField] private float mouseSensitivity = 100f;
-
-    private Vector3 defaultPosition;
 
     private float xRotation = 0f;
 
@@ -26,8 +23,6 @@ public class InputSystem : MonoBehaviour
 
         playerControls = new PlayerControls();
         playerControls.Enable();
-
-        defaultPosition = transform.position;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -66,14 +61,5 @@ public class InputSystem : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    //private void Sit()
-    //{
-    //    if (playerControls.Player.Sit.triggered)
-    //    {
-    //        var n = new Vector3(defaultPosition.x, 0, defaultPosition.z);
-    //        transform.position = n;
-    //    }
-        
-
-    //}
+    
 }
