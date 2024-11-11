@@ -2159,7 +2159,6 @@ GameObject:
   - component: {fileID: 4525594448535286537}
   - component: {fileID: 2855716331032645737}
   - component: {fileID: 4421186070542445911}
-  - component: {fileID: 3443837992812993824}
   m_Layer: 5
   m_Name: Windows
   m_TagString: Untagged
@@ -2255,25 +2254,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3443837992812993824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3413027842686022270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7ffc103426347438d8390bd76c6493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlPanelButton: {fileID: 7558221558415438173}
-  guidePanelButton: {fileID: 4132444463918461257}
-  boxInfoButton: {fileID: 1352716788304258863}
-  controlPanel: {fileID: 277040805169994380}
-  guidePanel: {fileID: 4572977566167611203}
-  boxInfoPanel: {fileID: 7569967792529672650}
-  time: {fileID: 8164926860570108857}
 --- !u!1 &3533484689894551623
 GameObject:
   m_ObjectHideFlags: 0

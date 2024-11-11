@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7529c5a805b7335479de68af9018412d, type: 3}
-  m_Name: StorageConfig
+  m_Script: {fileID: 11500000, guid: 4f3f13d0bae7b0f4b8fe74d1d9e21f4d, type: 3}
+  m_Name: Box
   m_EditorClassIdentifier: 
-  box: {fileID: 3967945480255736860, guid: ceb8d0e83f7f404458a73ec92563b6fe, type: 3}
+  boxPrefab: {fileID: 3090804339485700046, guid: b26a0b21aad26f745ae40350e373494e, type: 3}
+  slotSize: 1
