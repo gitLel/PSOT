@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,16 +20,15 @@ public class WaitingState : State
     {
         Debug.Log("Waiting");
         currentGuest = guestSpawner.SpawnGuest(Resources.Load("Guest").GetComponent<Guest>(), parcelStorage.GetFirstEmptyTransformSlot());
-        Debug.Log(currentGuest.GetComponent<Guest>().ID);
 
     }
 
     public override void Update()
     {
+        if (currentGuest)
+        {
+            
+        }
     }
-
-    private void CurrectID()
-    {
-        
-    }
+     
 }

@@ -22,7 +22,7 @@ public class RandomNameGenerator
             string[] maleNames = maleNamesData.text.Split('\n');
             string[] maleSurnames = maleSurnamesData.text.Split('\n');
 
-            string fullMaleName = maleNames[Random.Range(0, maleNames.Length - 1)] + "\n" + maleSurnames[Random.Range(0, maleSurnames.Length - 1)];
+            string fullMaleName = maleNames[Random.Range(0, maleNames.Length - 1)] + " " + maleSurnames[Random.Range(0, maleSurnames.Length - 1)];
             return fullMaleName;
 
         }

@@ -11,6 +11,7 @@ public class GuestSpawner
         guestPrefab.transform.position = spot.position;
         guestPrefab.GetComponent<Guest>().Name = SetNameForGuest();
         guestPrefab.GetComponent<Guest>().ID = SetIDForGuest();
+        guestPrefab.name = guestPrefab.GetComponent<Guest>().Name + " (Guest)";
 
         return guestPrefab;
     }
